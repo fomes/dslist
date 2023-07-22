@@ -15,7 +15,7 @@ COPY src /app/src
 RUN mvn package -DskipTests
 
 # Define a imagem base, normalmente uma imagem oficial do OpenJDK ou do AdoptOpenJDK é recomendada para Java
-FROM adoptopenjdk:11-jre-hotspot
+FROM openjdk:17-jdk
 
 # Diretório de trabalho dentro do contêiner
 WORKDIR /app
