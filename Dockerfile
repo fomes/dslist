@@ -1,5 +1,5 @@
-# Define a imagem base com o OpenJDK 11 e Maven instalado
-FROM maven:3.8.3-openjdk-11-slim AS builder
+# Define a imagem base com o OpenJDK 17 e Maven instalado
+FROM maven:3.8.3-openjdk-17-slim AS builder
 
 # Copia os arquivos de configuração do Maven para utilizar o cache de dependências
 COPY pom.xml /app/
