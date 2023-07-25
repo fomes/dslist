@@ -48,7 +48,9 @@ public class GameListController {
 
   @PostMapping(value = "new")
   public ResponseEntity<GameList> createList(@RequestBody GameList body) {
-    GameList list = gameListService.createList(body.getId(), body.getName());
+    List<GameListDTO> result = gameListService.findAll();
+    Long newId = (long)result.size()+1;
+    GameList list = gameListService.createList(newId, body.getName());
     return new ResponseEntity<>(list, HttpStatus.CREATED);
   }
 }
