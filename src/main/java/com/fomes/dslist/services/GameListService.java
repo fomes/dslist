@@ -8,12 +8,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fomes.dslist.dto.GameListDTO;
 import com.fomes.dslist.entities.GameList;
+import com.fomes.dslist.projections.GameListProjection;
 import com.fomes.dslist.projections.GameMinProjection;
 import com.fomes.dslist.repositories.GameListRepository;
 import com.fomes.dslist.repositories.GameRepository;
 
 @Service
-public class GameListService {
+public class GameListService implements GameListProjection {
 
   @Autowired
   private GameListRepository gameListRepository;
@@ -40,5 +41,14 @@ public class GameListService {
     for (int i = min; i <= max; i++) {
       gameListRepository.updateBelongingPosition(listId, list.get(i).getId(), i);
     }
+  }
+
+  @Override
+  public GameList createList(Long id, String name) {
+      GameList list = new GameList();
+      list.setId(id);
+      list.setName(name);
+
+      return gameListRepository.save(list);
   }
 }
