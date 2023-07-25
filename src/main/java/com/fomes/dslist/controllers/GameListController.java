@@ -46,7 +46,7 @@ public class GameListController {
     gameListService.move(listId, body.getSourceIndex(), body.getDestinationIndex());
   }
 
-  @PostMapping(value = "new")
+  @PostMapping(value = "/new")
   public ResponseEntity<GameList> createList(@RequestBody GameList body) {
     List<GameListDTO> result = gameListService.findAll();
     Long newId = (long)result.size()+1;
